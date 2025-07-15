@@ -46,7 +46,11 @@ const movies = [
   
   // ✍️ Solve it here ✍️
   
-  
+  const fakePromo = movies.map(function(value) {
+    return `${value.title} - Rating: ${value.rating} / 10`;
+  });
+
+  console.log(fakePromo);
   /*
   Task 2: Find Highly Rated Movies 🌟 (`.filter`)
   
@@ -66,6 +70,12 @@ const movies = [
   */
   
   // ✍️ Solve it here ✍️
+
+  const goodRatedMovies = movies.filter(function(value) {
+    return value.rating >= 8;
+  })
+  console.log(goodRatedMovies);
+  
 
 
  

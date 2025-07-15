@@ -120,18 +120,55 @@ export const newsData = {
 
 
 // YOUR TASK: Complete this function using the html structure in the htmlstructure.html file
+const createAllNewsElements = function(parent, articles) {
+  console.log(parent);
+  console.log(articles);
+  const newsTitle = document.createElement("h2")
+  const date = document.createElement("h3")
+  const actualNews = document.createElement("p");
+  const endTag = document.createElement("span");
+  const featuredStory = document.createElement("span")
+  featuredStory.textContent = "FEATURED STORY"
+  actualNews.textContent = articles.excerpt;
+  newsTitle.textContent = articles.title;
+  date.textContent = `7/15/2025.`
+  endTag.textContent = articles.tag;
+  actualNews.classList.add("news-excerpt");
+  newsTitle.classList.add("news-title");
+  date.classList.add("news-date");
+  endTag.classList.add("tag");
+  featuredStory.classList.add("featured-label");
+  parent.append(newsTitle);
+  parent.append(date);
+  parent.append(actualNews);
+  parent.appendChild(endTag);
 
-export function displayArticles(category) {
+
+}
+export function displayArticles(category, number = 1) {
   const newsContainer = document.querySelector('#news-container');
-  const articles = newsData[category];
+  
+  
   
   // 1. Clear previous content
-  
+  newsContainer.innerHTML = "";
   // 2. Create container elements
+  const actualArticle = document.createElement("article");
+  actualArticle.classList.add("news-card");
+  actualArticle.classList.add("featured");
+ 
+  
+  
+  
+  // NOTE: Here I will create a separate function for creating all required news elements.
+  createAllNewsElements(actualArticle, newsData[`${category}`][number]);
+  newsContainer.append(actualArticle);
+ 
   
   // 3. Create article element
   
   // 4. Create and setup image
+  
   
   // 5. Create content container
   
@@ -148,8 +185,12 @@ export function displayArticles(category) {
   // 11. Assemble the elements
 
   
-  newsContainer.insertBefore(featuredArticle, newsContainer.firstChild);
+  // newsContainer.insertBefore(featuredArticle, newsContainer.firstChild);
 }
+
+
+
+
 
 
 // DO NOT CHANGE THIS
